@@ -1,0 +1,23 @@
+spring:
+  datasource:   #配置数据库连接的四个信息，这里使用的是SpringBoot内置的数据库连接池Hikari
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/myshop
+    username: root
+    password: admin
+  jackson:
+    default-property-inclusion: ALWAYS
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd
+mybatis:
+  type-aliases-package: com.hrp.domain  #配置的是MyBatis的实体类包扫描
+my:
+  properties:
+    name: 小小
+    age: 18
+    hobby:
+      - 写代码
+      - 运动
+      - 阅读
+    family:
+      father: 爸爸
+      mother: 妈妈

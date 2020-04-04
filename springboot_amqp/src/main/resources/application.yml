@@ -1,0 +1,7 @@
+spring:
+  rabbitmq:
+    host: 192.168.177.128
+    port: 5672    #端口默认就是5672，如果没有RabbitMQ没有修改默认端口的话，可以不配置
+    virtual-host: /mymq
+    username: admin
+    password: admin

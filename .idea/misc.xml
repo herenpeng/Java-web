@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="F:/jar/mybean/docs" />
+    <option name="OTHER_OPTIONS" value=" -encoding UTF-8 -charset UTF-8 -windowtitle &quot;test&quot; " />
+    <option name="LOCALE" value="zh_CN" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/jdbcTemplate2/pom.xml" />
+        <option value="$PROJECT_DIR$/my_first_ssm/pom.xml" />
+        <option value="$PROJECT_DIR$/mybean/pom.xml" />
+        <option value="$PROJECT_DIR$/mybean_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_data_jpa/pom.xml" />
+        <option value="$PROJECT_DIR$/jpa_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_jpa/pom.xml" />
+        <option value="$PROJECT_DIR$/lucene_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_es/pom.xml" />
+        <option value="$PROJECT_DIR$/my_shop/pom.xml" />
+        <option value="$PROJECT_DIR$/my_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_mybatis_plus/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_redis/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_amqp/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_thymeleaf/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_security/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_jdbcTemplate/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

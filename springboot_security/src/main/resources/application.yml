@@ -1,0 +1,23 @@
+spring:
+  datasource:   #配置数据库连接的四个信息，这里使用的是SpringBoot内置的数据库连接池Hikari
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot_security
+    username: root
+    password: admin
+  jackson:
+    default-property-inclusion: ALWAYS
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd
+  security:
+#    user:
+#      name: 123
+#      password: 123
+#      roles: user
+  mvc:
+    view:
+      prefix: "/"
+      suffix: ".html"
+mybatis-plus:
+  type-aliases-package: com.security.domain
+
+
