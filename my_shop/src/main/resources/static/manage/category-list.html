@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>所有商品类别</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css"/>
+	<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="../js/javascript.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+	<script type="text/javascript" src="../js/httpVueLoader.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript" src="../js/node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<div id="categoryListApp">
+	<top-manage></top-manage>
+	<div id="middle">
+		<div id="position">
+			您现在的位置是&nbsp;&gt;&nbsp;<a href="index-manage.html">管理后台</a>&nbsp;&gt;&nbsp;商品类别管理
+		</div>
+		<product-manage></product-manage>
+		<div id="main">
+			<table>
+				<tr class="firstLine">
+					<td style="width:100px;">父类别ID</td>
+					<td style="width:300px;">父类别名称</td>
+					<td style="width:100px;">子类别ID</td>
+					<td style="width:300px;">子类别名称</td>
+					<td>操作</td>
+				</tr>
+				<tr>
+					<td colspan="5" align="left" style="font-weight:bolder;font-style:italic;">&lt;!删除商品类别时，该类别下的子类和商品都将一同删除，请谨慎操作!&gt;</td>
+				</tr>
+				<tr v-for="(category,index) in categoryList">
+					<td v-text="category.id"></td>
+					<td v-text="category.name"></td>
+					<td v-text="category.cid"></td>
+					<td v-text="category.cname"></td>
+					<td>
+						<a href="category-update.html">修改</a>|<a href="">删除</a>
+					</td>
+				</tr>
+				<tr class="lastLine" v-for="i in lastSize">
+					<td colspan="5"></td>
+				</tr>
+				<tr class="lastLine">
+					<td colspan="3"></td>
+					<td colspan="2" align="right">
+						<input type="button" value="-" class="modifyButton" @click="jumpminus()"/>
+						<input type="text" size="4" v-model="currentPage"/>
+						<input type="button" value="+" class="modifyButton" @click="jumpplus()"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<bottom></bottom>
+</div>
+<script type="text/javascript">
+	Vue.use(httpVueLoader);
+	const app = new Vue({
+		el: "#categoryListApp",
+		data: {
+			categoryList: [],
+			currentPage: 1,
+			pages: 0,
+			lastSize: 0,
+		},
+		created() {
+			this.loadData();
+		},
+		methods: {
+			loadData() {
+				axios.get("/category/page/" + this.currentPage).then(resp => {
+					this.categoryList = resp.data.records;
+					this.currentPage = resp.data.current;
+					this.pages = resp.data.pages;
+					this.lastSize = resp.data.size - resp.data.records.length;
+				});
+			},
+			jumpminus() {
+				if(this.currentPage > 1){
+					this.currentPage--;
+					this.loadData();
+				}
+			},
+			jumpplus() {
+				if(this.currentPage < this.pages){
+					this.currentPage++;
+					this.loadData();
+				}
+			},
+		},
+		components: {
+			'top-manage': 'url:../common/top-manage.vue',
+			'bottom': 'url:../common/bottom.vue',
+			'product-manage': 'url:../common/product-manage.vue',
+		},
+	});
+</script>
+</body>
+</html>

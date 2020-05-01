@@ -1,0 +1,857 @@
+@charset "UTF-8";
+*{ 
+	margin:0px;
+/* 	padding:0px; */
+	font-family:"宋体";
+	text-decoration:none;/*所有的文本都没有了下划线，包括超链接*/
+/* 	border:1px solid black; */
+}
+input,textarea{
+	border-radius:5px;
+}
+.button{
+	height:30px;
+	padding:0px 15px;
+	border:1px solid #FF8800;
+	background-color:#FFF0D9;
+}
+.modifyButton{
+	height:25px;
+	border:1px solid #FF8800;
+	background-color:#FFF0D9;
+}
+/* 注释几种可能会用到的颜色
+ 	#FF4000; 	深橙色主题
+  	#FF8800; 	浅橙色主题 导航栏logo颜色
+ 	#FFAA33; 	淡橙色主题<h2>
+ 	#FFBB66;	 模糊橙色	<dt>
+ 	#FFDDAA; 		<dd>
+ 	#FF0000;	 红色	
+ 	#FFF0D9; 	淡红色   导航栏悬浮颜色
+ 	#853200;	深褐色字体颜色
+ 	#00BFFF; 	蓝色主题 */
+
+/* 这是最上面的header头部和logocss样式 */
+#header{
+	width:1300px;
+	margin:0px auto;
+	height:88px;
+}
+#header #logo{
+	float:left;
+	height:45px;
+	margin-left:30px;
+	color:#FF8800;
+	font:bolder 40px "宋体";
+}
+#header #help{
+	float:right;
+	margin-right:25px;
+}
+#header #help a{
+	line-height:45px;
+	margin:5px;	
+	color:#FF4000;
+}
+#header #help a:hover{
+	color:#FF0000;
+	text-decoration:underline;
+}
+/* 这是上部导航栏css样式 */
+#header #navigator{
+	clear:both;
+	border:1px solid #FF8800;
+	background-color:#FF8800;/* 橙色主题 */
+	height:40px;
+	border-radius:20px;
+	text-align:right;
+	color:white;
+	font-size:17px;
+	line-height:40px;
+	font-weight:bold;
+}
+#header #navigator>a{
+	color:white;
+	cursor:pointer;
+	margin-right:40px;
+	margin-left:10px;
+}
+#header #navigator ul li{
+	float:left;
+	list-style-type:none;
+	width:100px;
+	margin:0px 30px;	
+}
+#header #navigator ul li a{
+	display:block;
+	color:#FFFFFF;
+	text-align:center;
+}
+#header #navigator ul li a:hover{
+	background-color:#FFF0D9;
+	color:#853200;
+}
+/* 这是左边导航栏的css样式 */
+#lefter{
+	float:left;
+	width:260px;
+	overflow:hidden;/* 多余的修剪隐藏掉 */
+	margin-bottom:15px;
+}
+/* 这是左边商品子导航栏的css样式 */
+#lefter #childNav,#lefter #theme,#lefter #myfoot{
+	border:1px solid #FF8800;
+	padding:5px;
+}
+#lefter #childNav h2,#lefter #theme h2,#lefter #myfoot h2{
+	background-color:#FFAA33;
+	color:#853200;
+	font-weight:bolder;
+	line-height:40px;
+	padding-left:10px;
+}
+#lefter #childNav dl dt{
+	font-weight:bold;
+	line-height:35px;
+	padding-left:20px;
+	background-color:#FFBB66;
+	margin:5px 0px;
+	cursor:default;
+	text-align:justify;
+}
+#lefter #childNav dl dt a{
+	color:black;
+}
+#lefter #childNav dl dd{
+	line-height:35px;
+	padding-left:45px;
+	display:none;
+	cursor:default;
+}
+#lefter #childNav dl dd:hover{
+	background-color:#FFDDAA;
+}
+#lefter #childNav dl dd a{
+	color:black;
+	cursor:default;
+}
+/* 这是首页左边的主题市场的css样式 */
+#lefter #theme ul{
+	list-style-type:none;
+	line-height:35px;
+	padding-left:0px;
+}
+#lefter #theme ul li{
+	font-weight:bolder;
+	padding-left:20px;
+	margin:5px 0px;
+}
+#lefter #theme ul li:hover,#lefter #theme ul li:hover a{
+	color:#FF4000;
+	background-color:#FFDDAA;
+}
+#lefter #theme ul li a{
+	color:black;
+	font-weight:normal;
+	margin:5px;
+}
+#lefter #theme ul li a:hover{
+	text-decoration:underline;
+}
+#lefter #theme ul li span{
+	float:right;
+	cursor:default;
+	margin-right:5px;
+}
+/* 这是左边我的足迹的css样式 */
+#lefter #myfoot{
+	border:1px solid #FF8800;
+	padding:5px;
+	margin-top:10px;
+}
+#lefter #myfoot dl dt{
+	float:left;
+	width:65px;
+	height:65px;
+	margin:5px 0px;
+	clear:both;
+	text-align:center;
+	border:3px solid #FFBB66;
+	border-radius:5px;
+}
+#lefter #myfoot dl dt img{
+	width:60px;
+	height:60px;
+	margin-top:2px;
+}
+#lefter #myfoot dl dd{
+	float:left;
+	width:168px;
+	height:65px;
+	margin:5px 0px;
+	padding-left:3px;
+	border:3px solid #FFBB66;
+	border-left:none;
+	border-radius:5px;
+	color:#FF4000;
+}
+#lefter #myfoot dl dd a{
+	color:gray;
+}
+#lefter #myfoot dl dd a:hover{
+	color:#FF4000;
+	text-decoration:underline;
+}
+#lefter #myfoot dl dd span{
+	line-height:30px;
+}
+#lefter #myfoot div{
+	clear:both;	
+	height:30px;
+	line-height:30px;
+	padding-left:10px;
+	background-color:#FFAA33;
+}
+#lefter #myfoot div a{
+	color:black;
+}
+/* 右边的css样式 */
+#right{
+	float:right;
+	width:280px;
+	height:300px;
+	text-align:center;
+	padding-top:20px;
+	color:#FF4000;
+	line-height:30px;
+	border:10px solid #FF8800;
+	border-radius:8px;
+}
+#right div{
+	width:100px;
+	height:100px;
+	border:3px solid #FF8800;
+	border-radius:50px;
+	margin:15px auto;
+	overflow:hidden;
+}
+#right img{
+	width:100%;
+	height:100%;
+}
+#right #clock{
+	 font-size:25px;
+	 font-family:"楷体";
+}
+/* 这是底部css样式 */
+#footer{
+	clear:both;          /* 清除浮动 */
+	color:gray;
+	width:1300px;
+	margin:15px auto;
+	text-align:center;
+	line-height:35px;
+	border-top:2px solid #FF8800;
+}
+/* 这是中部css样式 */
+#middle{
+	width:1250px;
+	margin:0px auto;
+	margin-bottom:15px;
+}
+#middle #position{
+	color:gray;
+	line-height:40px;
+}
+#middle #position a{
+	color:gray;
+}
+#middle #position a:hover{
+	color:#FF4000;
+}
+/* 这是main的css样式 ，设置、后台*/
+#main{
+	float:right;
+	width:980px;
+}
+#main>table{
+	width:900px;
+	margin:0px auto;
+	color:#FF4000;
+	text-align:center;
+	line-height:40px;
+}
+#main>table tr td{
+	height:40px;
+	border-bottom:1px dashed #FF8800;
+}
+#main>table .firstLine td{
+	font-weight:bolder;
+}
+#main>table .lastLine td{
+	border-bottom:none;
+}
+#main>table tr td input{
+	text-align:center;
+}
+#main>table a{
+	color:#FF4000;
+}
+#main>table a:hover{
+	text-decoration:underline;
+}
+/* 这是中间轮播图的css样式 */
+#imgList{
+	overflow:hidden;
+	margin:0px 280px;
+	width:650px;
+	height:340px;
+	cursor:pointer;
+	position:relative;
+}
+#imgList img{
+	width:650px;
+}
+#imgList ul{		
+	width:200px;
+	height:16px;
+	position:absolute;
+	bottom:30px;
+	right:30px;
+	padding:0px;
+}
+#imgList ul li{
+	float:left;
+	list-style-type:none;
+	width:16px;
+	height:16px;
+	border:1px solid gray;
+	border-radius:8px;
+	margin-right:20px;
+	background:gray;
+	text-align:center;
+	line-height:16px;
+	font-size:0px;
+	opacity:0.5;
+}
+#imgList span{
+	width:45px;
+	height:60px;
+	text-align:center;
+	padding-top:30px;
+	font-weight:bolder;
+	font-size:30px;
+	background-color:#F0F0F0;
+	opacity:0.5;
+	position:absolute;
+	top:125px;
+}
+#imgList span:hover{
+	opacity:0.9;
+}
+#imgList span.changeleft{
+	left:0px;
+}
+#imgList span.changeright{
+	right:0px;
+}
+/* 商品列表页面的css样式 */
+/* 今日热卖的css样式 */
+#todayHot{
+	color:#FF4000;
+	height:590px;
+	margin:30px 0px 0px 280px;
+}
+#todayHot p,#newarrival p,#main p{
+	font-size:20px;
+	color:#FF4000;
+	font-weight:bolder;
+	margin-bottom:10px;
+	padding-left:10px;
+	border-bottom:5px solid #FF8800;
+}
+#todayHot ul,#main ul{
+	padding-left:5px;
+}
+#todayHot ul li,#main ul li{
+	float:left;
+	list-style-type:none;
+	width:180px;
+	height:260px;
+	padding:5px;
+	color:#FF4000;
+	border:1px solid #FFFFFF;
+}
+#todayHot ul li:hover,#main ul li:hover{
+	cursor:pointer;
+	border:1px solid #FF4000;
+}
+#todayHot ul li img,#main ul li img{
+	width:170px;
+	height:170px;
+	margin:5px 5px;
+}
+#todayHot ul li div,#main ul li div{
+	height:40px;
+}
+#todayHot ul li a,#main ul li a{
+	color:gray;
+}
+#todayHot ul li a:hover,#main ul li a:hover{
+	color:#FF4000;
+	text-decoration:underline;
+}
+#todayHot ul li span,#main ul li span{
+	font-size:20px;
+	line-height:40px;
+}
+/* 最新上架的css样式 */
+#newarrival{
+	color:#FF4000;
+	height:625px;
+}
+#newarrival ul{
+	padding-left:20px;
+}
+#newarrival ul li{
+	float:left;
+	list-style-type:none;
+	width:190px;
+	height:280px;
+	padding:5px;
+	color:#FF4000;
+	border:1px solid #FFFFFF;
+}
+#newarrival ul li:hover{
+	cursor:pointer;
+	border:1px solid #FF4000;
+}
+#newarrival ul li img{
+	width:180px;
+	height:180px;
+	margin:5px 5px;
+}
+#newarrival ul li div{
+	height:40px;
+/* 	margin:0px 5px 0px 5px; */
+}
+#newarrival ul li a{
+	color:gray;
+}
+#newarrival ul li a:hover{
+	color:#FF4000;
+	text-decoration:underline;
+}
+#newarrival ul li span{
+	font-size:20px;
+	line-height:50px;
+}
+
+/* 欢迎的css样式 */
+.prompt{
+	width:300px;
+	height:80px;
+	border:2px solid #FF8800;
+	line-height:80px;
+	text-align:center;
+	color:#FF4000;
+	margin:200px auto 300px auto;
+}
+/* 这是注册页面和登录页面的css样式 */
+#register,#login{
+	width:550px;
+	height:550px;
+	margin:5px auto;
+	padding:5px;
+	border:3px double #FF8800;
+}
+#register h1,#login h1,#info h1,#modifyuser h1{
+	line-height:60px;
+	background-color:#FFDDAA;
+	font-weight:bolder;
+	font-family:"黑体";
+	padding-left:20px;
+}
+#register table{
+	margin:20px auto;
+	width:500px;
+	height:420px;
+	color:#FF4000;
+	line-height:40px;
+}
+#register table span,#login table span,#modifyuser table span{
+	display:none;
+	font-size:12px;
+}
+#register img,#login img{
+	font-style:italic;
+	color:#FF4000;
+}
+#register img:hover,#login img:hover{
+	cursor:pointer;
+	text-decoration:underline;
+}
+#register .button,#login .button,#info .button,#modifyuser .button{
+	height:30px;
+	padding:0px 30px;
+	border:1px solid #FF8800;
+	background-color:#FFF0D9;
+}
+#login table{
+	margin:80px auto;
+	width:500px;
+	height:260px;
+	line-height:40px;
+	color:#FF4000;
+}
+/* 用户地址信息的css样式 */
+#register textarea,#modifyuser textarea{
+	width:250px;
+	height:60px;
+	resize:none;
+}
+/* 详细信息的css样式 */
+#info{
+	width:550px;
+	height:650px;
+	margin:5px auto;
+	padding:5px;
+	border:3px double #FF8800;
+}
+#info table{
+	margin:20px auto;
+	width:500px;
+	height:550px;
+	color:#FF4000;
+	line-height:40px;
+}
+#modifyuser{
+	width:550px;
+	height:750px;
+	margin:5px auto;
+	padding:5px;
+	border:3px double #FF8800;
+}
+#modifyuser table{
+	margin:20px auto;
+	width:500px;
+	height:650px;
+	color:#FF4000;
+	line-height:40px;
+}
+/* 这里是购物车的css样式 */
+#shopcar{
+	width:1000px;
+	color:#FF4000;
+	margin:5px auto;
+	border:3px double #FF8800;
+}
+#shopcar table{
+	width:100%;
+	text-align:center;
+}
+#shopcar #shopcarword{
+	color:#FF4000;
+	text-align:left;
+	font:bolder 30px "宋体";
+	padding-left:20px;
+}
+#shopcar img{
+	width:60px;
+	height:60px;
+	border-radius:5px;
+}
+#shopcar table tr td{
+	height:60px;
+	border-bottom:1px dashed #FF8800;
+}
+#shopcar table tr td input{
+	text-align:center;
+}
+#shopcar .firstLine td{
+	height:45px;
+	font-weight:bolder;
+}
+#shopcar .lastLine td{
+	border-bottom:none;
+}
+#shopcar .num,#productInfo .num{
+	text-align:center;
+	color:black;
+	background-color:white;
+}
+/* 商品详情页面的css样式 */
+#productImg{
+	float:left;
+	width:400px;
+	height:400px;
+	margin:50px 0px 100px 100px;
+	border-radius:10px;
+	overflow:hidden;
+	border:1px solid #FF8800;
+}
+#productImg img{
+	width:400px;
+	height:400px;
+}
+#productInfo{
+	float:right;
+	width:600px;
+	height:400px;
+	margin:50px 100px 100px 0px;
+}
+#productInfo table{
+	width:600px;
+	height:400px;
+	color:#FF4000;
+}
+#productInfo table .product{
+	font:bolder 20px '宋体';
+}
+#productInfo .button{
+	height:30px;
+	padding:0px 30px;
+	border:1px solid #FF8800;
+	background-color:#FFF0D9;
+}
+
+/* 这里的订单的css样式 */
+#orderuser{
+	width:1000px;
+	height:100px;
+	margin:20px auto;
+	border:3px double #FF8800;
+	border-radius:10px;
+	color:#FF4000;
+}
+#orderuser table{
+	width:760px;
+	height:80px;
+	margin:10px auto;
+	border-left:8px solid #FF8800;
+}
+#orderuser table tr td{
+	padding-left:10px;
+}
+#orderuser a{
+	color:#FF4000;
+}
+#orderuser a:hover{
+	text-decoration:underline;
+}
+#orderuser table tr td select{
+	border:1px solid #FF8800;
+	border-radius:5px;
+}
+#orderproduct{
+	width:1000px;
+	color:#FF4000;
+	margin:20px auto;
+	border:3px double #FF8800;
+	border-radius:10px;
+}
+#orderproduct table{
+	width:800px;
+	margin:20px auto;
+}
+#orderproduct table tr{
+	height:55px;
+}
+#orderproduct table img{
+	width:210px;
+	height:210px;
+	margin:5px 5px;
+	border:1px solid #FF8800;
+	border-radius:10px;
+}
+#orderproduct table span{
+	border:1px solid #FF8800;
+	border-radius:3px;
+	background-color:#FFF0D9;
+	font-size:14px;
+}
+#ordersubmit{
+	width:1000px;
+	height:50px;
+	margin:20px auto;
+	text-align:right;
+	color:#FF4000;
+} 
+#ordersubmit input{
+	height:40px;
+	margin:5px auto;
+	padding:0px 30px;
+	border:1px solid #FF8800;
+	background-color:#FFF0D9;
+}
+#findorder{
+	width:1000px;
+	height:50px;
+	margin:20px auto;
+	border:1px solid #FF8800;
+	border-radius:10px;
+	background-color:#FF8800;
+}
+#findorder ul{
+	margin-left:20px;
+	padding:0px;
+}
+#findorder ul li{
+	float:left;
+	list-style-type:none;
+	width:150px;
+	height:50px;
+	margin:0px 20px;
+}
+#findorder ul li a{
+	display:block;
+	font-size:24px;
+	font-weight:bolder;
+	line-height:50px;
+	color:#FFFFFF;
+	text-align:center;
+}
+#findorder ul li a:hover{
+	background-color:#FFF0D9;
+	color:#853200;
+}
+/* 商品留言的css样式 */
+#message{
+	clear:both;
+	width:1050px;
+	color:#FF4000;
+	margin:0px auto;
+}
+#message table{
+	width:800px;
+	margin:80px auto 120px auto;
+	font-weight:bolder;
+	line-height:40px;
+}
+#message table img{
+	width:200px;
+	height:200px;
+	margin:5px 5px;
+	border:1px solid #FF8800;
+	border-radius:10px;
+}
+#message table textarea{
+	width:500px;
+	height:220px;
+	resize:none;
+	margin:10px 10px;
+}
+/* 商品下面的留言信息css样式 */
+#message p{
+	font-size:20px;
+	color:#FF4000;
+	font-weight:bolder;
+	margin-bottom:10px;
+	padding-left:10px;
+	border-bottom:5px solid #FF8800;
+}
+#message #nomessage{
+	height:100px;
+	color:#FF4000;
+	line-height:100px;
+	text-align:center;
+	border:1px solid #FF8800;
+	border-radius:10px;
+}
+#message #messageinfo{
+	margin:10px auto;
+	border:1px solid #FF8800;
+	border-radius:10px;
+}
+#message #messageinfo table{
+	width:1000px;
+	margin:0px auto;
+	font-weight:normal;
+	line-height:40px;
+}
+/* 聊天室的css样式 */
+#chat{
+	width:1005px;
+	height:505px;
+	margin:10px auto;
+	border:5px solid #FF8800;
+	border-radius:10px;
+}
+#chatuser{
+	float:left;
+	width:200px;
+	height:500px;
+	color:#FF4000;
+	overflow:auto;
+	border-right:1px solid gray;
+}
+#chatuser ul{
+	padding-left:0px;
+	list-style-type:none;
+}
+#chatuser ul li{
+	width:180px;
+	height:45px;
+	font:bold 20px "宋体";
+	line-height:45px;
+	margin:0px;
+	padding-left:10px;
+}
+#chatuser ul li:hover{
+	cursor:default;
+	background-color:#FFDDAA;
+}
+#chathead{
+	float:left;
+	width:778px;
+	height:40px;
+	color:#FF4000;
+	font:bold 20px "宋体";
+	line-height:40px;
+	padding-left:20px;
+	border-bottom:1px solid gray;
+}
+#chatcontents{
+	float:left;
+	width:800px;
+	height:350px;
+	overflow:auto;
+}
+#chatcontents #chatdatetime{
+	text-align:center;
+	color:gray;
+	font-size:14px;
+}
+#chatcontents #chatword{
+	line-height:30px;
+	margin-left:20px;
+	margin-right:20px;
+}
+#chatcontents #chatword span{
+	padding:5px;
+	border:3px double #FF4000;
+	border-radius:5px;
+}
+#chattext{
+	float:left;
+	width:800px;
+	height:110px;
+	border-top:1px solid gray;
+}
+#chattext form{
+	width:100%;
+	height:100%;
+}
+#chattext textarea{
+	float:left;
+	width:700px;
+	height:90px;
+	resize:none;
+	margin:10px 10px;
+	border:1px solid #FF8800;
+}
+#chattext input{
+	float:left;
+	margin-top:70px;
+}
+

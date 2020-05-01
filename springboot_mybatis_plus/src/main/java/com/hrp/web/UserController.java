@@ -1,6 +1,7 @@
 package com.hrp.web;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.hrp.annotation.LogAnnotation;
 import com.hrp.domain.User;
 import com.hrp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,6 @@ public class UserController {
     public ResponseEntity<IPage<User>> findUserByPage(
             @PathVariable("currentPage") Integer currentPage,
             @RequestParam(defaultValue = "5") Integer size) throws Exception {
-        int i = 1/0;
         return ResponseEntity.ok(userService.findUserByPage(currentPage, size));
     }
 
@@ -33,6 +33,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    @LogAnnotation
     @DeleteMapping("{id}")
     public ResponseEntity<Void> delUserById(@PathVariable("id") Integer id) throws Exception {
         userService.delUserById(id);

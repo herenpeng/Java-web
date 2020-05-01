@@ -1,0 +1,22 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.hrp.config.UploadProperties",
+      "name": "file.upload",
+      "type": "com.hrp.config.UploadProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.hrp.config.UploadProperties",
+      "name": "file.upload.allow-types",
+      "type": "java.util.List<java.lang.String>"
+    },
+    {
+      "sourceType": "com.hrp.config.UploadProperties",
+      "name": "file.upload.path",
+      "type": "java.lang.String"
+    }
+  ]
+}

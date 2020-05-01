@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>后台首页</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css"/>
+	<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="../js/javascript.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+	<script type="text/javascript" src="../js/httpVueLoader.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript" src="../js/node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<div id="indexManageApp">
+	<top-manage></top-manage>
+
+	<div id="middle">
+		<div id="position">
+			您现在的位置是&nbsp;&gt;&nbsp;<a href="./index_manage.html">管理后台</a>&nbsp;&gt;&nbsp;首页
+		</div>
+		<div class="prompt">欢迎来到管理后台</div>
+	</div>
+
+	<bottom></bottom>
+</div>
+<script type="text/javascript">
+	Vue.use(httpVueLoader);
+	const app = new Vue({
+		el: "#indexManageApp",
+		components: {
+			'top-manage': 'url:../common/top-manage.vue',
+			'bottom': 'url:../common/bottom.vue',
+		},
+	});
+</script>
+</body>
+</html>

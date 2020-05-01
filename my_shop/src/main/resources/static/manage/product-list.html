@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>所有商品</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css"/>
+	<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="../js/javascript.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+	<script type="text/javascript" src="../js/httpVueLoader.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript" src="../js/node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<div id="productListApp">
+	<top-manage></top-manage>
+	<div id="middle">
+		<div id="position">
+			您现在的位置是&nbsp;&gt;&nbsp;<a href="index-manage.html">管理后台</a>&nbsp;&gt;&nbsp;商品管理
+		</div>
+		<product-manage></product-manage>
+		<div id="main">
+			<table>
+				<tr class="firstLine">
+					<td style="width:50px;">商品ID</td>
+					<td style="width:250px;">商品名称</td>
+					<td style="width:80px;">商品价格</td>
+					<td style="width:80px;">商品库存</td>
+					<td style="width:100px;">上架时间</td>
+					<td style="width:80px;">销量</td>
+					<td style="width:100px;">商品类别</td>
+					<td>更多...</td>
+				</tr>
+				<tr v-for="(product,index) in productList">
+					<td v-text="product.id"></td>
+					<td v-text="product.name"></td>
+					<td v-text="product.price"></td>
+					<td v-text="product.stock"></td>
+					<td v-text="product.date"></td>
+					<td v-text="product.sales"></td>
+					<td v-text="product.categoryName"></td>
+					<td><a href="product-info.html">浏览详情</a></td>
+				</tr>
+				<tr class="lastLine" v-for="i in lastSize">
+					<td colspan="8"></td>
+				</tr>
+				<tr class="lastLine">
+					<td colspan="6"></td>
+					<td colspan="2" align="right">
+						<input type="button" value="-" class="modifyButton" @click="jumpminus()"/>
+						<input type="text" size="4" v-model="currentPage"/>
+						<input type="button" value="+" class="modifyButton" @click="jumpplus()"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<bottom></bottom>
+</div>
+<script type="text/javascript">
+	Vue.use(httpVueLoader);
+	const app = new Vue({
+		el: "#productListApp",
+		data: {
+			productList: [],
+			currentPage: 1,
+			pages: 0,
+			lastSize: 0,
+		},
+		created() {
+			this.loadData();
+		},
+		methods: {
+			loadData() {
+				axios.get("/product/page/"+this.currentPage).then(resp => {
+					this.productList = resp.data.records;
+					this.currentPage = resp.data.current;
+					this.pages = resp.data.pages;
+					this.lastSize = resp.data.size - resp.data.records.length;
+				});
+			},
+			jumpminus() {
+				if(this.currentPage > 1){
+					this.currentPage--;
+					this.loadData();
+				}
+			},
+			jumpplus() {
+				if(this.currentPage < this.pages){
+					this.currentPage++;
+					this.loadData();
+				}
+			},
+		},
+		components: {
+			'top-manage': 'url:../common/top-manage.vue',
+			'bottom': 'url:../common/bottom.vue',
+			'product-manage': 'url:../common/product-manage.vue',
+		},
+	});
+</script>
+
+</body>
+</html>

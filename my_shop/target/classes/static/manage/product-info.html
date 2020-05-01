@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品信息页面</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css"/>
+	<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="../js/javascript.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+	<script type="text/javascript" src="../js/httpVueLoader.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript" src="../js/node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<div id="productInfoApp">
+	<top-manage></top-manage>
+
+	<div id="middle">
+		<div id="position">
+			您现在的位置是&nbsp;&gt;&nbsp;<a href="index-manage.html">管理后台</a>&nbsp;&gt;&nbsp;商品管理
+		</div>
+		<div id="productImg"><img :src="product.picture"/></div>
+		<div id="productInfo">
+			<table>
+				<tr>
+					<td class="product" v-text="product.name"></td>
+				</tr>
+				<tr>
+					<td class="product" v-text="product.desc"></td>
+				</tr>
+				<tr>
+					<td class="product">￥<span v-text="product.price"></span></td>
+				</tr>
+				<tr>
+					<td>商品类别：<span v-text="product.categoryName"></span></td>
+				</tr>
+				<tr>
+					<td>销量：<span v-text="product.sales"></span></td>
+				</tr>
+				<tr>
+					<td>库存：<span v-text="product.stock"></span></td>
+				</tr>
+				<tr>
+					<td>上架时间：<span v-text="product.date"></span></td>
+				</tr>
+				<tr>
+					<td>
+						<a href="product-update.html"><input type="submit" value="修改商品信息" class="button"/></a>
+						<a href=""><input type="submit" value="删除商品" class="button"/></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<bottom></bottom>
+</div>
+<script type="text/javascript">
+	Vue.use(httpVueLoader);
+	const app = new Vue({
+		el: "#productInfoApp",
+		data: {
+			id: 1,
+			product: "",
+		},
+		created() {
+			this.product.id = this.id;
+			this.loadData();
+		},
+		methods: {
+			loadData() {
+				axios.get("/product/" + this.id).then(resp => {
+					this.product = resp.data;
+				});
+			},
+		},
+		components: {
+			'top-manage': 'url:../common/top-manage.vue',
+			'bottom': 'url:../common/bottom.vue',
+		},
+	});
+</script>
+
+
+</body>
+</html>

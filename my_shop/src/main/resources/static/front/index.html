@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>前台首页</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css"/>
+	<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="../js/javascript.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+	<script type="text/javascript" src="../js/httpVueLoader.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript" src="../js/node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+
+<div id="indexApp">
+	<top-protal></top-protal>
+
+	<div id="middle">
+		<div id="position">
+			您现在的位置是&nbsp;&gt;&nbsp;<a href="index.html">网上商城</a>&nbsp;&gt;&nbsp;首页
+		</div>
+		<div id="lefter">
+			<div id="theme">
+				<h2>主题市场</h2>
+				<ul>
+					<li><a href="">女装</a>/<a href="">男装</a>/<a href="">内衣</a><span>&gt;</span></li>
+					<li><a href="">鞋靴</a>/<a href="">箱包</a>/<a href="">配件</a><span>&gt;</span></li>
+					<li><a href="">家电</a>/<a href="">数码</a>/<a href="">手机</a><span>&gt;</span></li>
+					<li><a href="">珠宝</a>/<a href="">眼镜</a>/<a href="">手表</a><span>&gt;</span></li>
+					<li><a href="">户外</a>/<a href="">运动</a>/<a href="">乐器</a><span>&gt;</span></li>
+					<li><a href="">游戏</a>/<a href="">动漫</a>/<a href="">影视</a><span>&gt;</span></li>
+					<li><a href="">美食</a>/<a href="">生鲜</a>/<a href="">零食</a><span>&gt;</span></li>
+					<li><a href="">鲜花</a>/<a href="">宠物</a>/<a href="">保健品</a><span>&gt;</span></li>
+					<li><a href="">童装玩具</a>/<a href="">孕产</a>/<a href="">用品</a><span>&gt;</span></li>
+				</ul>
+			</div>
+			<div id="myfoot">
+				<h2>我的足迹</h2>
+				<dl>
+					<c:forEach var="myfoot" items="${myfootlist}">
+						<dt><img src="${pageContext.request.contextPath}/images/productImg/${myfoot.product_imgurl}"/></dt>
+						<dd><a href="../ProductServlet?action=product&product_id=${myfoot.product_id}">${myfoot.product_describe}</a><br/>￥<span>${myfoot.product_price}</span>元</dd>
+					</c:forEach>
+					<c:forEach begin="1" end="${remainNumber}" step="1">
+						<dt style="border:0px solid #FFFFFF;"></dt>
+						<dd style="border:0px solid #FFFFFF;"></dd>
+					</c:forEach>
+				</dl>
+				<div><a href="../ProductServlet?action=clearmyfoot">清除我的足迹</a></div>
+			</div>
+		</div>
+		<div id="right">
+			<span>Hi<c:if test="${user!=null}">，admin</c:if>，您好！</span><br/>
+			<div>
+				<c:if test="${user!= null and !user.photo.equals('')}"><img src="${pageContext.request.contextPath}/images/userPhoto/${user.photo}" alt="头像不见了"/></c:if>
+			</div>
+			<span>欢迎登录网上商城！</span><br/>
+			<span id="week"></span><br/>
+			<span id="clock"></span><br/>
+		</div>
+		<div id="imgList">
+			<a href="#"><img src="../images/gz01.jpg" name="changeimg"/></a>
+			<a href="#"><img src="../images/dx01.jpg" name="changeimg"/></a>
+			<a href="#"><img src="../images/wz01.jpg" name="changeimg"/></a>
+			<a href="#"><img src="../images/pt01.jpg" name="changeimg"/></a>
+			<a href="#"><img src="../images/qz03.jpg" name="changeimg"/></a>
+			<ul>
+				<li class="changepoint" style="background-color:red;opacity:0.9;">0</li>
+				<li class="changepoint" >1</li>
+				<li class="changepoint" >2</li>
+				<li class="changepoint" >3</li>
+				<li class="changepoint" >4</li>
+			</ul>
+			<span class="changeleft">&lt;</span>
+			<span class="changeright">&gt;</span>
+		</div>
+		<div id="todayHot">
+			<p>&gt;今日热卖</p>
+			<ul>
+				<li v-for="(product,index) in todayHotProductList">
+					<img :src="product.picture"/>
+					<div><a href="" v-text="product.desc"></a></div>
+					￥<span v-text="product.price"></span>元
+				</li>
+			</ul>
+		</div>
+		<div id="newarrival">
+			<p>&gt;最新上架</p>
+			<ul>
+				<li v-for="(product,index) in newarrivalProductList">
+					<img :src="product.picture"/>
+					<div><a href="" v-text="product.desc"></a></div>
+					￥<span v-text="product.price"></span>元
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<bottom></bottom>
+</div>
+
+<script type="text/javascript">
+	Vue.use(httpVueLoader);
+	const app = new Vue({
+		el: "#indexApp",
+		data: {
+			todayHotProductList: [],
+			newarrivalProductList: [],
+		},
+		created() {
+			this.loadData();
+		},
+		methods: {
+			loadData() {
+				axios.get("/product/todayhot").then(resp => {
+					this.todayHotProductList = resp.data;
+				});
+				axios.get("/product/newarrival").then(resp => {
+					this.newarrivalProductList = resp.data;
+				});
+			},
+		},
+		components: {
+			'top-protal': 'url:../common/top-protal.vue',
+			'bottom': 'url:../common/bottom.vue',
+		},
+	});
+</script>
+</body>
+</html>

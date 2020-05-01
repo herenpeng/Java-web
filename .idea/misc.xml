@@ -35,6 +35,7 @@
         <option value="$PROJECT_DIR$/springboot_security/pom.xml" />
         <option value="$PROJECT_DIR$/spring_mybatis/pom.xml" />
         <option value="$PROJECT_DIR$/spring_jdbcTemplate/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_freemarker/pom.xml" />
       </list>
     </option>
   </component>

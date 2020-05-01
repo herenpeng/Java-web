@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>登录页面</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css"/>
+	<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="../js/javascript.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+	<script type="text/javascript" src="../js/httpVueLoader.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript" src="../js/node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+
+<div id="loginApp">
+	<top-protal></top-protal>
+
+	<div id="middle">
+		<div id="position">
+			您现在的位置是&nbsp;&gt;&nbsp;<a href="index.html">网上商城</a>&nbsp;&gt;&nbsp;登录页面
+		</div>
+		<div id="login">
+			<h1>欢迎登录网上商城</h1>
+			<table>
+				<tr>
+					<td align="right" style="width:80px;">用户名：</td>
+					<td style="width:270px;"><input type="text" size="30" placeholder="请输入您的用户名" v-model="user.username"/></td>
+					<td><span></span></td>
+				</tr>
+				<tr>
+					<td align="right">密码：</td>
+					<td><input type="password" size="30" placeholder="请输入您的密码" v-model="user.password"/></td>
+					<td><span></span></td>
+				</tr>
+				<tr>
+					<td align="right">验证码：</td>
+					<td style="font-size:12px;">
+						<input type="text" placeholder="请识别右侧的验证码" name="verification"/>
+						<img id="verification" src="../VerificationServlet" alt="看不清，换一张" align="top"/>
+					</td>
+					<td><span></span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="登录" class="button"/></td>
+					<td><span></span></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<bottom></bottom>
+</div>
+<script type="text/javascript">
+	Vue.use(httpVueLoader);
+	const app = new Vue({
+		el: "#loginApp",
+		data: {
+			user: {
+				username: "",
+				password: "",
+			}
+		},
+		methods: {
+
+		},
+		components: {
+			'top-protal': 'url:../common/top-protal.vue',
+			'bottom': 'url:../common/bottom.vue',
+		},
+	});
+</script>
+
+</body>
+</html>

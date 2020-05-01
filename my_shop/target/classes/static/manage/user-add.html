@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>添加用户</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css"/>
+	<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="../js/javascript.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+	<script type="text/javascript" src="../js/httpVueLoader.js"></script>
+	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript" src="../js/node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<div id="userAddApp">
+	<top-manage></top-manage>
+
+	<div id="middle">
+		<div id="position">
+			您现在的位置是&nbsp;&gt;&nbsp;<a href="index-manage.html">管理后台</a>&nbsp;&gt;&nbsp;用户管理
+		</div>
+		<user-manage></user-manage>
+		<div id="main">
+			<div id="register">
+				<h1>添加用户</h1>
+				<table>
+					<tr>
+						<td align="right" style="width:80px;">用户名：</td>
+						<td style="width:270px;"><input type="text" size="30" placeholder="请输入您的用户名" v-model="user.username"/></td>
+						<td><span></span></td>
+					</tr>
+					<tr>
+						<td align="right">密码：</td>
+						<td><input type="password" size="30" placeholder="请输入您的密码" v-model="user.password"/></td>
+						<td><span></span></td>
+					</tr>
+					<tr>
+						<td align="right">确认密码：</td>
+						<td><input type="password" size="30" placeholder="请确认您的密码"/></td>
+						<td><span></span></td>
+					</tr>
+					<tr>
+						<td align="right">姓名：</td>
+						<td><input type="text" size="30" placeholder="请输入您的真实姓名" v-model="user.name"/></td>
+						<td><span></span></td>
+					</tr>
+					<tr>
+						<td align="right">性别：</td>
+						<td>
+							<input type="radio" v-model="user.gender" value="1"/>男
+							<input type="radio" v-model="user.gender" value="0"/>女
+						</td>
+						<td><span></span></td>
+					</tr>
+					<tr>
+						<td align="right">出生日期：</td>
+						<td><input type="date" v-model="user.birthday"/></td>
+						<td><span></span></td>
+					</tr>
+					<tr>
+						<td align="right">电话号码：</td>
+						<td><input type="tel" size="30" placeholder="请输入您的手机号码" v-model="user.phone"/></td>
+						<td><span></span></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" value="添加用户" class="button" @click="submit()"/></td>
+						<td><span></span></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<bottom></bottom>
+</div>
+<script type="text/javascript">
+	Vue.use(httpVueLoader);
+	const app = new Vue({
+		el: "#userAddApp",
+		data: {
+			user:{
+				username:"",
+				password:"",
+				name:"",
+				gender:"",
+				birthday:"",
+				phone:"",
+			},
+		},
+		watch:{
+		},
+		methods: {
+			submit(){
+				axios.post("/user",this.user).then(resp =>{
+					location.href="./user-list.html";
+				});
+			}
+		},
+		components: {
+			'top-manage': 'url:../common/top-manage.vue',
+			'bottom': 'url:../common/bottom.vue',
+			'user-manage': 'url:../common/user-manage.vue',
+		},
+	});
+</script>
+
+</body>
+</html>

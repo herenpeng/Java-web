@@ -26,8 +26,11 @@ public class LogAop {
 
     private Log log;
 
-    @Pointcut("execution(* com.hrp.web.*.*(..))")
+//    @Pointcut("execution(* com.hrp.web.*.*(..))")
+    @Pointcut("@annotation(com.hrp.annotation.LogAnnotation)")
     public void controllerAOP(){}
+
+
 
     @Before("controllerAOP()")
     public void doBefore(){

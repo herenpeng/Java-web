@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring_data_jpa" />
-        <module name="springboot_amqp" />
+        <module name="springboot_security" />
         <module name="springboot_mybatis" />
+        <module name="springboot_amqp" />
+        <module name="springboot_freemarker" />
         <module name="my_shop" />
-        <module name="springboot_redis" />
         <module name="lucene_demo" />
         <module name="my_demo" />
         <module name="springboot_es" />
@@ -20,9 +20,9 @@
         <module name="springboot_mybatis_plus" />
         <module name="springboot_thymeleaf" />
         <module name="spring_jdbcTemplate" />
-        <module name="Java_web" />
-        <module name="springboot_security" />
+        <module name="spring_data_jpa" />
         <module name="springboot_jpa" />
+        <module name="springboot_redis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -40,6 +40,7 @@
       <module name="spring_initializr_demo" options="-parameters" />
       <module name="springboot_amqp" options="-parameters" />
       <module name="springboot_es" options="-parameters" />
+      <module name="springboot_freemarker" options="-parameters" />
       <module name="springboot_jpa" options="-parameters" />
       <module name="springboot_mybatis" options="-parameters" />
       <module name="springboot_mybatis_plus" options="-parameters" />
