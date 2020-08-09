@@ -38,10 +38,9 @@
 			<div id="myfoot">
 				<h2>我的足迹</h2>
 				<dl>
-					<c:forEach var="myfoot" items="${myfootlist}">
-						<dt><img src="${pageContext.request.contextPath}/images/productImg/${myfoot.product_imgurl}"/></dt>
-						<dd><a href="../ProductServlet?action=product&product_id=${myfoot.product_id}">${myfoot.product_describe}</a><br/>￥<span>${myfoot.product_price}</span>元</dd>
-					</c:forEach>
+					<div v-for="(product,index) in myfootlist">
+						<dt><img :src="product.picture"/></dt>
+						<dd><a href="">{{product.desc}}</a><br/>￥<span>{{product.price}}</span>元</dd>
 					<c:forEach begin="1" end="${remainNumber}" step="1">
 						<dt style="border:0px solid #FFFFFF;"></dt>
 						<dd style="border:0px solid #FFFFFF;"></dd>
@@ -51,9 +50,9 @@
 			</div>
 		</div>
 		<div id="right">
-			<span>Hi<c:if test="${user!=null}">，admin</c:if>，您好！</span><br/>
+			<span>Hi<span v-if="user.username != null">，{{user.username}}</span>，您好！</span><br/>
 			<div>
-				<c:if test="${user!= null and !user.photo.equals('')}"><img src="${pageContext.request.contextPath}/images/userPhoto/${user.photo}" alt="头像不见了"/></c:if>
+				<img :src="user.picture" alt="头像不见了"/>
 			</div>
 			<span>欢迎登录网上商城！</span><br/>
 			<span id="week"></span><br/>
@@ -80,7 +79,7 @@
 			<ul>
 				<li v-for="(product,index) in todayHotProductList">
 					<img :src="product.picture"/>
-					<div><a href="" v-text="product.desc"></a></div>
+					<div><a href="" v-text="product.desc" @click="addfoot(product)"></a></div>
 					￥<span v-text="product.price"></span>元
 				</li>
 			</ul>
@@ -88,7 +87,7 @@
 		<div id="newarrival">
 			<p>&gt;最新上架</p>
 			<ul>
-				<li v-for="(product,index) in newarrivalProductList">
+				<li v-for="(product,index) in newarrivalProductList" :key="index">
 					<img :src="product.picture"/>
 					<div><a href="" v-text="product.desc"></a></div>
 					￥<span v-text="product.price"></span>元
@@ -105,14 +104,24 @@
 	const app = new Vue({
 		el: "#indexApp",
 		data: {
+			user: {
+				id: 1,
+				username: '',
+				password: '',
+				picture: '',
+			},
 			todayHotProductList: [],
 			newarrivalProductList: [],
+			myfootlist: [],
 		},
 		created() {
 			this.loadData();
 		},
 		methods: {
 			loadData() {
+				axios.get("/user/"+this.user.id).then(resp => {
+					this.user = resp.data;
+				});
 				axios.get("/product/todayhot").then(resp => {
 					this.todayHotProductList = resp.data;
 				});
@@ -120,6 +129,9 @@
 					this.newarrivalProductList = resp.data;
 				});
 			},
+			addfoot(product) {
+				this.myfootlist.push(product);
+			}
 		},
 		components: {
 			'top-protal': 'url:../common/top-protal.vue',

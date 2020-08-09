@@ -10,13 +10,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginController {
 
+    /**
+     *
+     * @return
+     */
     @GetMapping("login")
     public String login(){
         return "login";
     }
 
+    /**
+     *
+     * @return
+     */
     @GetMapping("index")
     public String loginSuccess(){
+        System.out.println("index页面");
         return "index";
     }
 

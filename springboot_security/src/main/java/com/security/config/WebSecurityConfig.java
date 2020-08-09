@@ -3,10 +3,13 @@ package com.security.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.security.dao.MenuDao;
 import com.security.domain.Menu;
+import com.security.filter.SecurityAccessDecisionManager;
+import com.security.filter.SecurityFilter;
 import com.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.*;
+import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,6 +19,7 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
@@ -34,13 +38,19 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true,securedEnabled=true,jsr250Enabled=true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserService userService;
 
     @Autowired
     private MenuDao menuDao;
+
+    @Autowired
+    private SecurityFilter securityFilter;
+
+    @Autowired
+    private SecurityAccessDecisionManager securityAccessDecisionManager;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -53,8 +63,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry authorizeRequests = http.authorizeRequests();
 
-        menus.stream().forEach(menu->{
-            authorizeRequests.antMatchers(menu.getPattern()).hasAnyRole(menu.getName());
+//        menus.stream().forEach(menu->{
+//            authorizeRequests.antMatchers(menu.getPattern()).hasAnyRole(menu.getName());
+//        });
+        authorizeRequests.withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+            @Override
+            public <O extends FilterSecurityInterceptor> O postProcess(O o) {
+                o.setSecurityMetadataSource(securityFilter);
+                o.setAccessDecisionManager(securityAccessDecisionManager);
+                return o;
+            }
         });
 
         //其余所有请求都需要登录后认证才能访问能访问
@@ -112,7 +130,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                 });
 
-        http.logout().logoutUrl("doLogout")
+        http.logout().logoutUrl("/doLogout")
                 .logoutSuccessUrl("/login").permitAll();
 
         // 关闭CSRF防御，方便用postman进行接口测试

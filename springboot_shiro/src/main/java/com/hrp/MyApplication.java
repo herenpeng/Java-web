@@ -4,12 +4,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @author hrp
- * 2020/2/20 15:40
+ * 程序启动类
+ *
+ * @author 何任鹏
+ * @version 1.0
+ * @date 2020年05月07日
  */
 @SpringBootApplication
-public class MyShopApplication {
+public class MyApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MyShopApplication.class);
+        SpringApplication.run(MyApplication.class);
     }
 }

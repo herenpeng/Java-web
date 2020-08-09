@@ -16,7 +16,7 @@ public class SpikeDaoImpl implements SpikeDao {
     private RedisTemplate redisTemplate;
 
     @Override
-    public void addStock(String key,String value) {
+    public void addStock(String key, String value) {
         redisTemplate.boundListOps(key).leftPush(value);
     }
 

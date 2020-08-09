@@ -5,6 +5,7 @@
     <title>FreeMarker入门</title>
 </head>
 <body>
+    <#include "head.ftl">
     <h1>${hello}</h1>
     <h1>${now?date}</h1>
     <table>

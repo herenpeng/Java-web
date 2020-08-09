@@ -1,4 +1,4 @@
-package com.hrp.web;
+package com.hrp.controller;
 
 import com.hrp.domain.User;
 import com.hrp.service.UserService;

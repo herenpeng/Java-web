@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
+ * 图片上传的Java配置类
  * @author hrp
  * 2020/2/23 17:35
  */

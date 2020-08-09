@@ -1,4 +1,4 @@
-package com.hrp.web;
+package com.hrp.controller;
 
 import com.hrp.domain.User;
 import org.springframework.stereotype.Controller;
@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author hrp
@@ -30,4 +29,11 @@ public class UserController {
 
         return "index";
     }
+
+    @RequestMapping("/page")
+    public String page() {
+        return "page";
+    }
+
+
 }

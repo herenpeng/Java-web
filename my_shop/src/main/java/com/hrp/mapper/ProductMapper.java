@@ -16,6 +16,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 分页查询商品
+     *
      * @param page
      * @return
      * @throws Exception
@@ -25,6 +26,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 保存产品信息
+     *
      * @param product
      */
     @Insert("insert into product (`name`,`desc`,`price`,`sales`,`stock`,`date`,`category_id`) values (#{name},#{desc},#{price},#{sales},#{stock},#{date},#{category.id})")
@@ -32,6 +34,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 用过用户id查找商品
+     *
      * @param id
      * @return
      */
@@ -40,6 +43,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 查找今日热卖商品
+     *
      * @return
      */
     @Select("select `picture`,`desc`,`price` from product order by sales desc limit 0,10;")
@@ -47,6 +51,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 查找最新上架商品
+     *
      * @return
      */
     @Select("select `picture`,`desc`,`price` from product order by date desc limit 0,10;")

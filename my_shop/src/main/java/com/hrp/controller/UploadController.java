@@ -1,4 +1,4 @@
-package com.hrp.web;
+package com.hrp.controller;
 
 import com.hrp.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;

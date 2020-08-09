@@ -72,7 +72,7 @@
 				<tr>
 					<td></td>
 					<td>
-						<a href="user-update.html"><input type="submit" value="修改用户信息" class="button"/></a>
+						<a href="#" @click="goUpdate(user.id)"><input type="submit" value="修改用户信息" class="button"/></a>
 						<a href="../UserServlet?action=deluser&pageNum=1"><input type="submit" value="删除用户"  class="button"/></a>
 					</td>
 					<td></td>
@@ -89,19 +89,21 @@
 	const app = new Vue({
 		el: "#userInfoApp",
 		data: {
-			id: 1,
-			user: "",
+			user: {},
 		},
 		created() {
-			this.user.id = this.id;
+			this.user.id = window.location.search.slice(1);
 			this.loadData();
 		},
 		methods: {
 			loadData() {
-				axios.get("/user/" + this.id).then(resp => {
+				axios.get("/user/" + this.user.id).then(resp => {
 					this.user = resp.data;
 				});
 			},
+			goUpdate(id) {
+				location.href="./user-update.html?"+id;
+			}
 		},
 		components: {
 			'top-manage': 'url:../common/top-manage.vue',

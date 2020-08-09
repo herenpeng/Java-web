@@ -21,23 +21,23 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public IPage<User> findUserByPage(Integer currentPage, Integer size) throws Exception{
+    public IPage<User> selectPage(Integer currentPage, Integer size) throws Exception{
         IPage<User> page = new Page<>(currentPage,size);
         return userDao.selectPage(page,null);
     }
 
     @Override
-    public void delUserById(Integer id) throws Exception {
+    public void deleteById(Integer id) throws Exception {
         userDao.deleteById(id);
     }
 
     @Override
-    public void saveUser(User user) throws Exception {
+    public void insert(User user) throws Exception {
         userDao.insert(user);
     }
 
     @Override
-    public void updateUser(User user) throws Exception {
+    public void update(User user) throws Exception {
         userDao.updateById(user);
     }
 }

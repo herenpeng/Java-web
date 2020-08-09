@@ -2,6 +2,7 @@ package com.security.test;
 
 import com.security.dao.UserDao;
 import com.security.domain.User;
+import com.security.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class UserTest {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private UserService userService;
 
     @Test
     public void test01(){
@@ -39,5 +43,6 @@ public class UserTest {
         }
         System.out.println("test");
     }
+
 
 }

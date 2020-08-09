@@ -1,4 +1,4 @@
-package com.hrp.web;
+package com.hrp.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hrp.domain.Category;

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.servlet.MultipartConfigElement;
 
 /**
+ * 图片上传的Java配置类
  * @author hrp
  * 2020/2/23 18:57
  */

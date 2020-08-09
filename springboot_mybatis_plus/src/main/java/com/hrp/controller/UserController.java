@@ -1,4 +1,4 @@
-package com.hrp.web;
+package com.hrp.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hrp.annotation.LogAnnotation;
@@ -21,28 +21,28 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("page/{currentPage}")
-    public ResponseEntity<IPage<User>> findUserByPage(
+    public ResponseEntity<IPage<User>> selectPage(
             @PathVariable("currentPage") Integer currentPage,
             @RequestParam(defaultValue = "5") Integer size) throws Exception {
-        return ResponseEntity.ok(userService.findUserByPage(currentPage, size));
+        return ResponseEntity.ok(userService.selectPage(currentPage, size));
     }
 
-    @PostMapping("add")
-    public ResponseEntity<Void> saveUser(User user) throws Exception {
-        userService.saveUser(user);
+    @PostMapping
+    public ResponseEntity<Void> insert(User user) throws Exception {
+        userService.insert(user);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @LogAnnotation
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> delUserById(@PathVariable("id") Integer id) throws Exception {
-        userService.delUserById(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+    public ResponseEntity<Void> deleteById(@PathVariable("id") Integer id) throws Exception {
+        userService.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 
-    @PutMapping("update")
-    public ResponseEntity<Void> updateUser(User user) throws Exception {
-        userService.updateUser(user);
+    @PutMapping
+    public ResponseEntity<Void> update(User user) throws Exception {
+        userService.update(user);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

@@ -45,6 +45,17 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.0.5</version>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.0</version> </dependency>
+        <!--devtools热部署-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <scope>true</scope>
+        </dependency>
     </dependencies>
 
 </project>

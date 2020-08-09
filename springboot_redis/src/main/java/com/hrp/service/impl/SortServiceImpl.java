@@ -21,16 +21,16 @@ public class SortServiceImpl implements SortService {
 
     @Override
     public void onClick(String name, Double score) {
-        sortDao.onClick(KEY,name,score);
+        sortDao.onClick(KEY, name, score);
     }
 
     @Override
     public Set<String> getSort() {
-        return sortDao.getSort(KEY,0L,-1L);
+        return sortDao.getSort(KEY, 0L, -1L);
     }
 
     @Override
     public Double getScore(String name) {
-        return sortDao.getScore(KEY,name);
+        return sortDao.getScore(KEY, name);
     }
 }

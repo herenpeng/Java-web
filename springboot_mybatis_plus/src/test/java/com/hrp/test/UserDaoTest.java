@@ -1,10 +1,10 @@
 package com.hrp.test;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hrp.dao.UserDao;
 import com.hrp.domain.User;
-import org.apache.ibatis.session.RowBounds;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,8 +67,10 @@ public class UserDaoTest {
      */
     @Test
     public void test04(){
-        IPage<User> page = new Page<>(2,3);
-        IPage<User> UserPage = userDao.selectPage(page, null);
+        IPage<User> page = new Page<>(1,3);
+        QueryWrapper queryWrapper = new QueryWrapper<User>();
+        queryWrapper.like("username","阿");
+        IPage<User> UserPage = userDao.selectPage(page, queryWrapper);
         for (User user : UserPage.getRecords()) {
             System.out.println(user);
         }
@@ -85,9 +87,33 @@ public class UserDaoTest {
         user.setName("宣墨");
         user.setGender(0);
         user.setBirthday(new Date());
-        user.setPhone("154845129875");
+        user.setPhone("1212121212");
         user.setPower(2);
         userDao.insert(user);
     }
+
+    @Test
+    public void test06(){
+        User user = new User();
+        user.setUsername("三三");
+        QueryWrapper queryWrapper = new QueryWrapper(user);
+        List<User> list = userDao.selectList(queryWrapper);
+        for (User u : list) {
+            System.out.println(u);
+        }
+    }
+
+    @Test
+    public void test07(){
+        User user = new User();
+        user.setId(4);
+        user.setUsername("三三");
+//        QueryWrapper queryWrapper = new QueryWrapper(user);
+//        userDao.update(user);
+        System.out.println(user);
+
+    }
+
+
 
 }

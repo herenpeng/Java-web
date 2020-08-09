@@ -1,7 +1,5 @@
 package com.hrp.test;
 
-import com.hrp.dao.CategoryDao;
-import com.hrp.dao.UserDao;
 import com.hrp.domain.Category;
 import com.hrp.domain.User;
 import com.hrp.service.CategoryService;
@@ -11,9 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * @author hrp
@@ -36,7 +31,7 @@ public class transactionalTest {
         user.setUsername("小山");
         user.setPassword("123");
         user.setName("珊珊");
-        userService.saveUser(user);
+        userService.insert(user);
 
         Category category = new Category();
         category.setName("家具");

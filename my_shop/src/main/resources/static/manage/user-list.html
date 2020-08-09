@@ -40,7 +40,7 @@
 					<td v-text="user.genderStr"></td>
 					<td v-text="user.birthday"></td>
 					<td v-text="user.phone"></td>
-					<td><a href="user-info.html">浏览详情</a></td>
+					<td><a href="#" @click="goInfo(user.id)">浏览详情</a></td>
 				</tr>
 				<tr class="lastLine" v-for="i in lastSize">
 					<td colspan="8"></td>
@@ -93,6 +93,9 @@
 					this.currentPage++;
 					this.loadData();
 				}
+			},
+			goInfo(id) {
+				location.href="./user-info.html?"+id;
 			},
 		},
 		components: {

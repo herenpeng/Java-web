@@ -8,6 +8,8 @@ import com.hrp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * User类的业务层实现
  * @author hrp
@@ -23,6 +25,11 @@ public class UserServiceImpl implements UserService {
     public IPage<User> findByPage(Integer currentPage, Integer size) throws Exception {
         IPage<User> page = new Page<>(currentPage,size);
         return userMapper.selectPage(page,null);
+    }
+
+    @Override
+    public List<User> findList() throws Exception {
+        return userMapper.selectList(null);
     }
 
 

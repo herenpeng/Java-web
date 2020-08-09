@@ -3,8 +3,6 @@ package com.security.domain;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
-import java.util.List;
-
 /**
  * @author hrp
  * 2020/3/27 11:40
@@ -20,5 +18,7 @@ public class Menu {
     private String name;
     @TableField(exist = false)
     private String description;
+
+
 
 }

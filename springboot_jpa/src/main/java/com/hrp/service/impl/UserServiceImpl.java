@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<User> findByPage(Integer pageNum, Integer pageSize) {
-        Pageable pageable = PageRequest.of(pageNum,pageSize);
+        Pageable pageable = PageRequest.of(pageNum, pageSize);
         Page<User> page = userDao.findAll(pageable);
         return page;
     }

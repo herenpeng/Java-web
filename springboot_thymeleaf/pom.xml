@@ -21,15 +21,15 @@
     </properties>
 
     <dependencies>
-        <!--Thymeleaf模板引擎的启动器-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
         <!--SpringMVC的启动器-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--Thymeleaf模板引擎的启动器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <!--Spring单元测试的启动器-->
         <dependency>

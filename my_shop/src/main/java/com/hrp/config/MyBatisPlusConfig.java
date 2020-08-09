@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * MyBatisPlus的Java配置类
+ *
  * @author hrp
  * 2020/3/16 9:38
  */
@@ -14,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 public class MyBatisPlusConfig {
     /**
      * 分页插件
+     *
      * @return
      */
     @Bean

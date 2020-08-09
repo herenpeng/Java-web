@@ -17,7 +17,7 @@ public interface UserService {
      * @return
      * @throws Exception
      */
-    IPage<User> findUserByPage(Integer currentPage, Integer size) throws Exception;
+    IPage<User> selectPage(Integer currentPage, Integer size) throws Exception;
 
     /**
      * 通过用户id删除用户
@@ -25,7 +25,7 @@ public interface UserService {
      * @param id
      * @throws Exception
      */
-    void delUserById(Integer id) throws Exception;
+    void deleteById(Integer id) throws Exception;
 
     /**
      * 添加用户信息
@@ -33,14 +33,14 @@ public interface UserService {
      * @param user
      * @throws Exception
      */
-    void saveUser(User user) throws Exception;
+    void insert(User user) throws Exception;
 
     /**
      * 通过用户id修改用户信息
      *
      * @param user
      */
-    void updateUser(User user) throws Exception;
+    void update(User user) throws Exception;
 
 
 }

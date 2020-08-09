@@ -7,7 +7,7 @@
 		</div>
 		<div id="navigator">
 			<ul>
-				<li><a href="../manage/index.html">首页</a></li>
+				<li><a href="../manage/index-manage.html">首页</a></li>
 				<li><a href="../manage/user-manage.html">用户</a></li>
 				<li><a href="../manage/product-manage.html">商品</a></li>
 				<li><a href="ordersManage.jsp">订单</a></li>
