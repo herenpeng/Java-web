@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDf转换图片</title>
+    <style>
+        .submitButton {
+            margin-top: 20px;
+            margin-left: 150px;
+            background-color: #e37e10;
+            border-radius: 10px;
+            border: 1px solid #ff8300;
+        }
+    </style>
+</head>
+<body>
+<div style="text-align: center">
+    <h1>PDF转换图片工具</h1>
+    <form action="/pdf/to/image" enctype="multipart/form-data" method="post" onsubmit="return allowFileType()">
+        <input type="file" id="file" name="file" placeholder="请选择PDF文件" onchange="allowFileType()" style="border: 1px solid black;"><br>
+        <input type="submit" value="一键转换图片" class="submitButton">
+    </form>
+</div>
+</body>
+<script>
+    function allowFileType() {
+        let file = document.getElementById("file").files[0];
+        let fileName = file.name;
+        let suffix = fileName.substring(fileName.lastIndexOf("."),fileName.length).toLowerCase();
+        if('.pdf' != suffix) {
+            alert("只允许传入PDF格式的文件！");
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>

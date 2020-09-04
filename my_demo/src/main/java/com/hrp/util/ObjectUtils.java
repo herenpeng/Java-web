@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 从jwt解析得到的数据是Object类型，转换为具体类型可能出现空指针，
  * 这个工具类进行了一些转换
+ * @author hrp
  */
 public class ObjectUtils {
 

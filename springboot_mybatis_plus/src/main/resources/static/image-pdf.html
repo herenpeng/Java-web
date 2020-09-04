@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片转换Pdf</title>
+    <style>
+        .submitButton {
+            margin-top: 20px;
+            margin-left: 150px;
+            background-color: #e37e10;
+            border-radius: 10px;
+            border: 1px solid #ff8300;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center">
+        <h1>图片转换pdf工具</h1>
+        <form action="/pdf/image/to" enctype="multipart/form-data" method="post" onsubmit="return allowFileType()">
+            <input type="file" id="file" name="file" placeholder="请选择图片" onchange="allowFileType()" style="border: 1px solid black;"><br>
+            <input type="submit" value="一键转换pdf文件" class="submitButton">
+        </form>
+    </div>
+</body>
+<script>
+    function allowFileType() {
+        let file = document.getElementById("file").files[0];
+        let fileName = file.name;
+        console.log(fileName)
+        let fileSize = file.size;
+        console.log(fileSize)
+        let suffix = fileName.substring(fileName.lastIndexOf("."),fileName.length).toLowerCase();
+        if('.jpg' != suffix && '.png' != suffix) {
+            alert("目前只允许传入.jpg或者.png格式的图片！");
+            return false;
+        }
+        if(fileSize > 2*1024*1024) {
+            alert("上传图片不允许超过2MB!");
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>
