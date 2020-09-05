@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
+ * jpa工具类
  * @author hrp
  * @date 2020/2/7 10:46
  */
