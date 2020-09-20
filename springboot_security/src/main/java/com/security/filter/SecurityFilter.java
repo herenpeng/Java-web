@@ -26,19 +26,19 @@ public class SecurityFilter implements FilterInvocationSecurityMetadataSource {
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
         //这里需要强转称FilterInvocation的原因是因为要获取请求的url。
         String requestUrl = ((FilterInvocation) object).getRequestUrl();
-//        System.out.println(requestUrl);
-//        List<Menu> menus = menuDao.selectList();
-//        for (Menu menu : menus) {
-//            if (pathMatcher.match(menu.getPattern(),requestUrl)) {
-//                List<Role> roles = menu.getRoles();
-//                String[] rolesStr = new String[roles.size()];
-//                for (int i = 0; i < roles.size(); i++) {
-//                    rolesStr[i] = roles.get(i).getName();
-//                }
-//                //传递的是需要的角色数组
-//                return SecurityConfig.createList(rolesStr);
-//            }
-//        }
+       System.out.println(requestUrl);
+       // List<Menu> menus = menuDao.selectList();
+       // for (Menu menu : menus) {
+       //     if (pathMatcher.match(menu.getPattern(),requestUrl)) {
+       //         List<Role> roles = menu.getRoles();
+       //         String[] rolesStr = new String[roles.size()];
+       //         for (int i = 0; i < roles.size(); i++) {
+       //             rolesStr[i] = roles.get(i).getName();
+       //         }
+       //         //传递的是需要的角色数组
+       //         return SecurityConfig.createList(rolesStr);
+       //     }
+       // }
         if("/login".equals(requestUrl) || "/doLogin".equals(requestUrl) || "/index".equals(requestUrl)) {
             return SecurityConfig.createList("ROLE_default");
         }

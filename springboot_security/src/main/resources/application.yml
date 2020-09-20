@@ -18,8 +18,11 @@ spring:
       additional-paths: src/main #重启目录
   freemarker:
     cache: false    #页面不加载缓存，修改即时生效
-
 mybatis-plus:
   type-aliases-package: com.security.domain
+  mapper-locations: classpath:/com/security/dao/*Dao.xml  #xml的路径
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 

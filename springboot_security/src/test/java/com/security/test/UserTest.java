@@ -44,5 +44,13 @@ public class UserTest {
         System.out.println("test");
     }
 
+    @Test
+    public void test03(){
+        User user = userDao.getOne(1);
+        // User user = userDao.selectById(1);
+        System.out.println(user);
+    }
+
+
 
 }

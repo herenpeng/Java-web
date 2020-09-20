@@ -2,9 +2,6 @@ package com.log.test;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 
 import java.io.File;
 
@@ -35,6 +32,7 @@ public class LogTest {
     public final static String FILE_PATH = "F:\\Maven\\repository";
     public final static String suffix = ".lastUpdated";
     //    public final static String suffix = "_remote.repositories";
+    //    public final static String suffix = "${";
     public static int count = 0;
 
     @Test

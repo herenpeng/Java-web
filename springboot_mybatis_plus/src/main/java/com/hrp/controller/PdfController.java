@@ -19,10 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("pdf")
 public class PdfController {
 
-//    @PostMapping("image/to")
-//    public void imageToPdf(@RequestParam("file") MultipartFile file,HttpServletResponse response) throws Exception{
-//        PdfUtils.imageToPdf(file,response);
-//    }
+    @PostMapping("image/to")
+    public void imageToPdf(@RequestParam("file") MultipartFile file,HttpServletResponse response) throws Exception{
+        PdfUtils.imageToPdf(file,response);
+    }
 
     @PostMapping("to/image")
     public void pdfToImage(@RequestParam("file") MultipartFile file,HttpServletResponse response) throws Exception{

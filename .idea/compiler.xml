@@ -7,22 +7,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springboot_security" />
-        <module name="springboot_mybatis" />
-        <module name="springboot_amqp" />
-        <module name="springboot_freemarker" />
-        <module name="my_shop" />
-        <module name="lucene_demo" />
-        <module name="my_demo" />
-        <module name="springboot_es" />
         <module name="jpa_demo" />
-        <module name="spring_mybatis" />
-        <module name="springboot_mybatis_plus" />
-        <module name="springboot_thymeleaf" />
         <module name="spring_jdbcTemplate" />
-        <module name="spring_data_jpa" />
-        <module name="springboot_jpa" />
+        <module name="springboot_es" />
+        <module name="springboot_mybatis_plus" />
+        <module name="springboot_amqp" />
+        <module name="springboot_mybatis" />
+        <module name="lucene_demo" />
         <module name="springboot_redis" />
+        <module name="springboot_jpa" />
+        <module name="springboot_shiro" />
+        <module name="springboot_security" />
+        <module name="springboot_freemarker" />
+        <module name="spring_data_jpa" />
+        <module name="spring_mybatis" />
+        <module name="my_shop" />
+        <module name="web-socket" />
+        <module name="springboot_thymeleaf" />
+        <module name="my_demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -46,7 +48,9 @@
       <module name="springboot_mybatis_plus" options="-parameters" />
       <module name="springboot_redis" options="-parameters" />
       <module name="springboot_security" options="-parameters" />
+      <module name="springboot_shiro" options="-parameters" />
       <module name="springboot_thymeleaf" options="-parameters" />
+      <module name="web-socket" options="-parameters" />
     </option>
   </component>
 </project>

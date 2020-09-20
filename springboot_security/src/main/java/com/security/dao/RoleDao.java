@@ -8,4 +8,5 @@ import com.security.domain.Role;
  * 2020/3/26 19:15
  */
 public interface RoleDao extends BaseMapper<Role> {
+
 }

@@ -3,6 +3,7 @@ package com.security.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.security.domain.Role;
 import com.security.domain.User;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -26,7 +27,14 @@ public interface UserDao extends BaseMapper<User> {
      * @param uid
      * @return
      */
-    @Select("select * from Role where id in (select rid from user_role where uid=#{uid})")
+    @Select("select * from role where id in (select rid from user_role where uid=#{uid})")
     List<Role> loadUserRolesById(Integer uid);
+
+    /**
+     * 查找一个
+     * @param id
+     * @return
+     */
+    User getOne(@Param("id") Integer id);
 
 }
