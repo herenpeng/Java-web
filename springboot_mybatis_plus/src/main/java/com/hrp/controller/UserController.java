@@ -20,6 +20,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @LogAnnotation
     @GetMapping("page/{currentPage}")
     public ResponseEntity<IPage<User>> selectPage(
             @PathVariable("currentPage") Integer currentPage,
@@ -28,7 +29,8 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> insert(User user) throws Exception {
+    public ResponseEntity<Void> insert(@RequestBody User user) throws Exception {
+        System.out.println(user);
         userService.insert(user);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

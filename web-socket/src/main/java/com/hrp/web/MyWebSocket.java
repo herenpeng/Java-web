@@ -8,7 +8,7 @@ import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 
 /**
- * WebSocket控制器
+ * WebSocket控制器，使用javax的websocket
  *
  * @author herenpeng
  * @since 2020-09-20 11:27

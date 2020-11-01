@@ -17,13 +17,19 @@ public class LogTest {
      * 使用LoggerFactory创建一个Logger对象
      */
 //    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @Test
-    public void delete() {
+    public void logTest01() {
 //        logger.info("记录信息日志");
 //        logger.warn("记录警告日志");
 //        logger.error("记录错误日志");
         log.info("记录信息日志");
+        log.warn("记录警告日志");
+        log.error("记录错误日志");
+    }
+
+    @Test
+    public void logTest02() {
+        log.info("记录信息日志: {}", "内容");
         log.warn("记录警告日志");
         log.error("记录错误日志");
     }

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
 
 /**
  * @author hrp
@@ -31,27 +30,38 @@ public class LogAop {
 
     @Before("controllerAOP()")
     public void doBefore(){
-        log = new Log();
-        log.setVisitTime(new Date());
+        // log = new Log();
+        // log.setVisitTime(new Date());
+        System.out.println("doBefore");
     }
 
     @After("controllerAOP()")
     public void doAfter(JoinPoint joinPoint){
-        log.setExecutionTime(System.currentTimeMillis() - log.getVisitTime().getTime());
-        log.setIp(request.getRemoteAddr());
-        log.setUri(request.getRequestURI());
-        log.setMethod("[类名]"+joinPoint.getTarget().getClass()+"[方法名]"+joinPoint.getSignature().getName());
+        // log.setExecutionTime(System.currentTimeMillis() - log.getVisitTime().getTime());
+        // log.setIp(request.getRemoteAddr());
+        // log.setUri(request.getRequestURI());
+        // log.setMethod("[类名]"+joinPoint.getTarget().getClass()+"[方法名]"+joinPoint.getSignature().getName());
+        System.out.println("doAfter");
     }
 
     @AfterReturning("controllerAOP()")
     public void doAfterReturning(){
-        logDao.insert(log);
+        // logDao.insert(log);
+        System.out.println("doAfterReturning");
     }
 
     @AfterThrowing(value = "controllerAOP()",throwing = "e")
     public void doException(Exception e){
-        log.setExceptionName(e.getClass().getName());
-        log.setExceptionMessage(e.getMessage());
-        logDao.insert(log);
+        // log.setExceptionName(e.getClass().getName());
+        // log.setExceptionMessage(e.getMessage());
+        // logDao.insert(log);
+        System.out.println("doException");
     }
+
+
+
+    // doBefore
+    // doAfter
+    // doAfterReturning
+
 }
