@@ -5,7 +5,6 @@ import com.hrp.domain.User;
 import com.hrp.service.UserService;
 import com.hrp.util.ExcelUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -38,10 +37,10 @@ public class UserController {
     }
 
     @GetMapping("export")
-    public ResponseEntity<Void> export(HttpServletResponse response) throws Exception {
+    public void export(HttpServletResponse response) throws Exception {
         List<User> exportData = userService.findList();
+        // ExcelUtils.exportExcel("用户列表.xlsx",User.class,exportData,response);
         ExcelUtils.exportExcel("用户列表",User.class,exportData,response);
-        return ResponseEntity.ok().build();
     }
 
     @GetMapping("{id}")
