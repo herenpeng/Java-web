@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+    <script type="text/javascript" src="../js/node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="file" @change="getFile($event)">
+    <input type="button" value="上传" @click="upload()">
+</div>
+</body>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            formData: new FormData(),
+        },
+        methods: {
+            upload() {
+                console.log(this.formData)
+                axios.post("/upload/image",this.formData).then(resp => {
+                    if (resp.status == 200) {
+                        alert("success");
+                    }
+                });
+            },
+            getFile(event) {
+                let file = event.target.files[0];
+                console.log(file)
+                let fileName = file.name;
+                let index = fileName.lastIndexOf(".");
+                if (index != -1) {
+                    let suffix = fileName.substr(index + 1).toLowerCase();
+                    if (suffix == 'png' || suffix == 'jpg') {
+                        this.formData.append("file",file);
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>
