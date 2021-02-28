@@ -1,7 +1,0 @@
-spring:
-  freemarker:
-    charset: UTF-8
-#    如果不配置模板文件后缀，默认是.ftl文件
-#    suffix: ".html"
-#    默认就是在templates目录下，是一个数组对象，可以配置多个
-#    template-loader-path: "classpath:/templates/"

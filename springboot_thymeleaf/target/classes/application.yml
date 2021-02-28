@@ -1,3 +1,0 @@
-spring:
-  thymeleaf:
-    cache: false    #关闭thymeleaf模板引擎的缓存，否则修改页面会因为缓存无法刷新
